@@ -25,17 +25,18 @@ class SnowRemovalRobot:
         self.user_location = data.data
 
     def get_weather_info(self):
+        self.user_location = 'Oshawa'
         if self.user_location:
             try:
-                api_key =  a57e3487d4af4c39a9505707242501  # Replace with WeatherAPI key
+                api_key =  'a57e3487d4af4c39a9505707242501'  # Replace with WeatherAPI key
                 url = f"https://api.weatherapi.com/v1/current.json?key={api_key}&q={self.user_location}"
                 response = requests.get(url)
                 data = json.loads(response.text)
-                snow_level = data['current']['snow_mm']
+                #snow_level = data['current']['snow_mm']
                 wind_speed = data['current']['wind_kmh']
                 temperature = data['current']['temp_c']
 
-                self.snow_pub.publish(str(snow_level))
+                #self.snow_pub.publish(str(snow_level))
                 self.wind_pub.publish(str(wind_speed))
                 self.temp_pub.publish(str(temperature))
             except Exception as e:
