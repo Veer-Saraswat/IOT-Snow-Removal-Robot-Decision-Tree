@@ -11,7 +11,7 @@ class WeatherRobot:
         # Defining ROS topics such as user_location and weather_forecast
         self.location_subscriber = rospy.Subscriber('/user_location', String, self.location_callback)
         self.weather_publisher = rospy.Publisher('/weather_forecast', String, queue_size=10)
-        self.location = "Oshawa Ontario"  #None # holding users location
+        self.location = None # holding users location
         self.api_key = 'a57e3487d4af4c39a9505707242501'  # Replace with API keyin quotes
         self.base_url = 'https://api.weatherapi.com/v1/current.json?'
 
